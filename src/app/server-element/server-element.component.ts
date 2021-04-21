@@ -1,17 +1,56 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ContentChild,
+  DoCheck,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+  ViewEncapsulation,
+} from "@angular/core";
 
 @Component({
-  selector: 'app-server-element',
-  templateUrl: './server-element.component.html',
-  styleUrls: ['./server-element.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  selector: "app-server-element",
+  templateUrl: "./server-element.component.html",
+  styleUrls: ["./server-element.component.css"],
+  encapsulation: ViewEncapsulation.Emulated,
 })
-export class ServerElementComponent implements OnInit {
-  @Input("srvElement") element: {type: string, name: string, content: string}
+export class ServerElementComponent
+  implements
+    OnInit,
+    OnChanges,
+    DoCheck,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewInit,
+    AfterViewChecked,
+    OnDestroy {
+  @Input("srvElement") element: { type: string; name: string; content: string };
+  @ViewChild("heading", { static: true }) header: ElementRef;
+  @ContentChild("contentParagraph", { static: true }) paragraph: ElementRef;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnChanges(changes: SimpleChanges) {}
 
+  ngOnInit(): void {}
+
+  ngDoCheck() {}
+
+  ngAfterContentInit() {}
+
+  ngAfterContentChecked() {}
+
+  ngAfterViewInit() {}
+
+  ngAfterViewChecked() {}
+
+  ngOnDestroy() {}
 }
